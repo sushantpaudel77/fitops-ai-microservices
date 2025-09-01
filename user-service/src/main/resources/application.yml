@@ -32,10 +32,10 @@ management:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8080/eureka/   # Eureka server URL
+      defaultZone: http://localhost:8761/eureka/   # Eureka server URL
     register-with-eureka: true                     # Register this service with Eureka
     fetch-registry: true                           # Fetch registry info from server
 
   instance:
     hostname: localhost
-    prefer-ip-address: tr
+    prefer-ip-address: true
