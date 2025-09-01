@@ -6,7 +6,17 @@ spring:
     name: activity-service
 
   data:
-    data:
-      mongodb:
-        uri: mongodb://localhost:21017/ai-activity-fitness
+    mongodb:
+      uri: mongodb://localhost:27017/aiactivityfitness
+      database: aiactivityfitness
 
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8080/eureka/   # Eureka server URL
+    register-with-eureka: true                     # Register this service with Eureka
+    fetch-registry: true                           # Fetch registry info from server
+
+  instance:
+    hostname: localhost
+    prefer-ip-address: true

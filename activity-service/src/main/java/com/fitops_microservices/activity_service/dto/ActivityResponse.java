@@ -1,6 +1,7 @@
 package com.fitops_microservices.activity_service.dto;
 
 import com.fitops_microservices.activity_service.model.ActivityType;
+import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 

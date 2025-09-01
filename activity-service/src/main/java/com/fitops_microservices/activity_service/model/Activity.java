@@ -12,7 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 import java.time.LocalDateTime;
 import java.util.Map;
 
-@Document(collection = "ai-activity-fitness")
+@Document(collection = "activities")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
