@@ -54,4 +54,8 @@ public class UserServiceImpl {
 
         return  response;
     }
+
+    public boolean validateUser(String userId) {
+        return userRepository.existsById(userId);
+    }
 }

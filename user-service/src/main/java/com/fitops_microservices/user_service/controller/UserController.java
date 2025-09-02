@@ -28,4 +28,10 @@ public class UserController {
       var user =  userService.register(userRequest);
       return new ResponseEntity<>(user, HttpStatus.CREATED);
     }
+
+    // inter-service communication endpoint
+    @GetMapping("/{userId}/validate")
+    public ResponseEntity<Boolean> validateUser(@PathVariable String userId) {
+        return ResponseEntity.ok(userService.validateUser(userId));
+    }
 }

@@ -1,0 +1,16 @@
+Level,Service,Category,Description,Parent_Service,Use_Case,Key_Features
+1,AWS Organizations,Foundation,Root service for multi-account governance and management,,Centralized billing and account creation,Master account and organizational units and consolidated billing
+2,AWS Control Tower,Setup & Automation,Landing zone setup and governance automation,AWS Organizations,Automated multi-account environment setup,Pre-configured blueprints and guardrails and account factory
+2,Service Control Policies (SCP),Security & Compliance,Organization-wide permission restrictions and guardrails,AWS Organizations,Restrict permissions across all accounts in organization,JSON-based policies and inheritance model and preventive controls
+3,AWS SSO (IAM Identity Center),Identity & Access,Single sign-on for accounts and applications,AWS Organizations,Centralized authentication and access management,SAML integration and permission sets and centralized user management
+3,AWS RAM (Resource Access Manager),Resource Sharing,Cross-account resource sharing within organization,AWS Organizations,Share VPCs and subnets and Route53 resolvers across accounts,Secure sharing and no data transfer charges and centralized management
+4,AWS STS (Security Token Service),Temporary Access,Temporary security credentials for cross-account access,AWS SSO,Assume roles and temporary credentials and federated access,Short-term tokens and role assumption and federated identity support
+5,Account A - Production,Account Layer,Production workloads and resources,AWS Control Tower,Host production applications and services,Isolated environment and strict governance and monitoring
+5,Account B - Development,Account Layer,Development and testing environment,AWS Control Tower,Development workloads and testing,Flexible policies and cost controls and sandbox environment
+5,Account C - Shared Services,Account Layer,Common services shared across organization,AWS Control Tower,Centralized logging and monitoring and networking,DNS and logging and security tools and shared infrastructure
+6,VPC - Production,Network Layer,Virtual private cloud for production workloads,Account A - Production,Isolated network environment,Private subnets and security groups and NACLs
+6,VPC - Development,Network Layer,Virtual private cloud for development workloads,Account B - Development,Development network isolation,Public/private subnets and flexible routing
+6,Shared VPC,Network Layer,Centrally managed VPC shared via RAM,Account C - Shared Services,Cross-account networking,Centralized networking and shared across accounts via RAM
+7,EC2 Instances,Compute Layer,Virtual servers running applications,VPC - Production,Application hosting and processing,Auto scaling and load balancing and monitoring
+7,RDS Databases,Data Layer,Managed database services,VPC - Production,Data storage and management,Multi-AZ deployment and automated backups and encryption
+7,Lambda Functions,Serverless Layer,Event-driven serverless compute,VPC - Development,Microservices and event processing,Auto scaling and pay-per-use and event triggers

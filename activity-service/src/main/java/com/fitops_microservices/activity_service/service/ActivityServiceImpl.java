@@ -13,8 +13,13 @@ import org.springframework.stereotype.Service;
 public class ActivityServiceImpl {
 
     private final ActivityRepository activityRepository;
+    private final UserValidationService userValidationService;
 
     public ActivityResponse trackActivity(ActivityRequest activityRequest) {
+
+       boolean isValidUSer = userValidationService.validateUser(activityRequest.getUserId());
+        if (!isValidUSer) throw new RuntimeException("Invalid User: " + activityRequest.getUserId());
+
         Activity activity = Activity.builder()
                 .userId(activityRequest.getUserId())
                 .type(activityRequest.getType())

@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: eureka-server
+
+eureka:
+  client:
+    register-with-eureka: false   # This is critical
+    fetch-registry: false         # Server does not fetch registry
+
+server:
+  port: 8761
