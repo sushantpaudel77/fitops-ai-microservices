@@ -11,6 +11,11 @@
           <package value="com.fitops_microservices.user_service" />
         </packages>
       </persistence-unit>
+      <persistence-unit moduleName="ai-service" name="Default">
+        <packages>
+          <package value="fitops_microservices.ai_service" />
+        </packages>
+      </persistence-unit>
     </persistence-units>
   </component>
 </project>
