@@ -1,4 +1,4 @@
 package fitops_microservices.ai_service.service;
 
-public interface RecommendationService {
+public class RecommendationServiceImpl {
 }
