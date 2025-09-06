@@ -2,22 +2,35 @@ spring:
   application:
     name: ai-service
 
-server:
-  port: 8083
-
   data:
     mongodb:
       uri: mongodb://localhost:27017/airecommendation
       database: airecommendation
 
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: activity-processor-group
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.use.type.headers: false
+        spring.json.value.default.type: fitops_microservices.ai_service.model.Activity
+        spring.json.trusted.packages: "*"
+
+server:
+  port: 8083
+
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/   # Eureka server URL
-    register-with-eureka: true                     # Register this service with Eureka
-    fetch-registry: true                           # Fetch registry info from server
-
+      defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
   instance:
     hostname: localhost
     prefer-ip-address: true
 
+kafka:
+  topic:
+    name: activity-events
