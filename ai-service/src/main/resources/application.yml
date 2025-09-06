@@ -31,6 +31,11 @@ eureka:
     hostname: localhost
     prefer-ip-address: true
 
+gemini:
+ api:
+   url: ${GEMINI_URL}
+   key: ${GEMINI_KEY}
+
 kafka:
   topic:
     name: activity-events
