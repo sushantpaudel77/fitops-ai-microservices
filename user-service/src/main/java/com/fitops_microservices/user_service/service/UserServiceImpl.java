@@ -18,8 +18,20 @@ public class UserServiceImpl {
     public UserResponse register(UserRequest userRequest)  {
 
         if (userRepository.existsByEmail(userRequest.getEmail())) {
-            throw new RuntimeException("User already exists with the email" + userRequest.getEmail());
+            User existingUser = userRepository.findByEmail(userRequest.getEmail());
+            UserResponse response = new UserResponse();
+
+            response.setId(existingUser.getId());
+            response.setPassword(existingUser.getPassword());
+            response.setEmail(existingUser.getEmail());
+            response.setFirstName(existingUser.getFirstName());
+            response.setLastName(existingUser.getLastName());
+            response.setCreatedAt(existingUser.getCreatedAt());
+            response.setUpdatedAt(existingUser.getUpdatedAt());
+
+            return response;
         }
+
         User user = new User();
         user.setEmail(userRequest.getEmail());
         user.setFirstName(userRequest.getFirstName());
@@ -27,7 +39,6 @@ public class UserServiceImpl {
         user.setPassword(userRequest.getPassword());
 
        User savedUser = userRepository.save(user);
-
        UserResponse response = new UserResponse();
 
        response.setId(savedUser.getId());
@@ -43,6 +54,7 @@ public class UserServiceImpl {
 
     public UserResponse getUserProfile(String userId) {
         User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found with the ID: " + userId));
+
         UserResponse response = new UserResponse();
         response.setId(user.getId());
         response.setPassword(user.getPassword());
@@ -56,6 +68,6 @@ public class UserServiceImpl {
     }
 
     public boolean validateUser(String userId) {
-        return userRepository.existsById(userId);
+        return userRepository.existsByKeyCloakId(userId);
     }
 }
