@@ -1,4 +1,4 @@
-package com.fitops_microservices.user_service.dto;
+package com.fitops_microservice.api_gateway.user;
 
 import lombok.Data;
 
