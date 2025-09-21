@@ -47,7 +47,3 @@ Access Keycloak at http://localhost:8181 and Kafka at localhost:9092.
 
 License
 This project is open-source under the MIT License.
-
-This keeps the `.md` clean with proper sections, horizontal rules (`---`), and the image included at the top.  
-
-If you want, I can also **center the image** and **resize it** for a nicer GitHub view. Do you want me to do that?
