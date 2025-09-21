@@ -42,7 +42,7 @@ The system uses microservices communicating via REST and Kafka, with centralized
 Navigate to the project directory and start Docker containers:
 
 
-docker-compose up -d
+   docker-compose up -d
 Access Keycloak at http://localhost:8181 and Kafka at localhost:9092.
 
 License
